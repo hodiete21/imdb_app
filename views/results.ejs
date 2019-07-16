@@ -1,0 +1,27 @@
+
+<% include ./partials/header %>
+<h2><%=data.totalResults%> Results for "<%=search%>"</h2>
+<% if(data.Response=="True"){%>
+	<% data["Search"].forEach (function(movie){ %>
+    <ul>
+      <li> <img src=<%=movie.Poster%> ><h3><%=movie.Title%> - (<%=movie.Year%>)</h3></li>
+    </ul>   
+	<% }) %>  
+<% }else{%>
+  <h1><%=data.Error%></h1>
+  <br>
+  <%}%> 
+
+ <% if (data["Search"]){%>
+<% if ((page==undefined  || page ==1)&&(data["Search"].length==10) ){ %>
+ 	<a href="/search?search=<%=search%>&page=2">Next</a>
+ 	<%}else if (page > 1 && (data["Search"].length)== 10) {%> 
+	<a href="/search?search=<%=search%>&page=<%=Number(page)-1%>">Previous</a>
+ 	<a href="/search?search=<%=search%>&page=<%=Number(page)+1%>">Next</a>
+ 	<%}else if (page > 1 && (data["Search"].length< 10)) {%> 
+    <a href="/search?search=<%=search%>&page=<%=Number(page)-1%>">Previous</a>
+ 	
+<%}%> 
+<%}%> 
+<a href="/">Go back</a>
+<% include ./partials/footer %>
