@@ -4,7 +4,7 @@ Pratice API use of OMDBAPI
 
 # How It works!
 Like Imdb, You search for a movie or tv show and results are generated showing the title and year pertaining to your search, Using OMDBAPI, which outputted JSON results. 
-Tools used:
+## Tools used:
 1. EJS
 2. Request
 3. Express 
