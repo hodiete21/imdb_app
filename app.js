@@ -22,13 +22,13 @@ app.use(bodyParser.urlencoded ({extended:true}));
 app.use(express.static(__dirname+'/public'));
 
 app.get("/search", function(req, res){
-  var search="http://omdbapi.com/?s="+req.query.search+"&page="+req.query.page+"&apikey=thewdb";
+  var search_entry= req.query.search.replace(/\s/g,'');//remove spaces from search query
+  var search="http://omdbapi.com/?s="+search_entry+"&page="+req.query.page+"&apikey=thewdb";
     request (search, function(error, response, body){
      if (!error && response.statusCode==200){
            
           var results= JSON.parse(body);
-          console.log(results);
-          res.render("results", {data:results, page:req.query.page, search:req.query.search});       
+          res.render("results", {data:results, page:req.query.page, search:search_entry});       
       }else{
 
          req.flash ("error", message);

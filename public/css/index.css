@@ -15,3 +15,15 @@ form input  {
 	vertical-align: middle;
 	width:419px;
 }
+
+
+table{
+	width: 900px;
+}
+tr:nth-child(2n){
+background-color:red;
+
+}
+
+
+
