@@ -17,12 +17,14 @@ app.use( function (req, res, next){
   next();
 });
 
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded ({extended:true}));
 app.use(express.static(__dirname+'/public'));
 
 app.get("/search", function(req, res){
-  var search_entry= req.query.search.replace(/\s/g,'');//remove spaces from search query
+  // var search_entry= req.query.search.replace(/\s/g,'');//remove spaces from search query
+  var search_entry= req.query.search;//remove spaces from search query
   var search="http://omdbapi.com/?s="+search_entry+"&page="+req.query.page+"&apikey=thewdb";
     request (search, function(error, response, body){
      if (!error && response.statusCode==200){
