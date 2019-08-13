@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded ({extended:true}));
 app.use(express.static(__dirname+'/public'));
 
 app.get("/search", function(req, res){
-  // var search_entry= req.query.search.replace(/\s/g,'');//remove spaces from search query
-  var search_entry= req.query.search;//remove spaces from search query
+   var search_entry= req.query.search.replace(/\s/g,' ');//remove spaces from search query
+  //var search_entry= req.query.search;//remove spaces from search query
   var search="http://omdbapi.com/?s="+search_entry+"&page="+req.query.page+"&apikey=thewdb";
     request (search, function(error, response, body){
      if (!error && response.statusCode==200){
@@ -33,7 +33,7 @@ app.get("/search", function(req, res){
           res.render("results", {data:results, page:req.query.page, search:search_entry});       
       }else{
 
-         req.flash ("error", message);
+         req.flash ("error", 'There is an error');
          res.redirect("/");
       }
         
