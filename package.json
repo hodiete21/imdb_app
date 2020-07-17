@@ -11,7 +11,7 @@
     "express-session": "^1.16.2",
     "nodemon": "^1.18.11",
     "request": "^2.88.0", 
-    "lodash": ">=4.17.13"
+    "lodash": ">=4.17.19"
   },
   "devDependencies": {},
   "scripts": {
